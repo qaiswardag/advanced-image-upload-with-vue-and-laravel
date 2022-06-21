@@ -15,8 +15,7 @@
             Image uploader
         </h1>
         <div id="app">
-            Vue components goes here
-            <br>
+            {{--Vue component--}}
             <app></app>
         </div>
     </div>
