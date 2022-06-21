@@ -1,12 +1,17 @@
 <template>
     <div class="mt-4">
         <file-pond
+            id="image"
             name="image"
+            :allowDrop="true"
+            :dropOnPage="true"
+            :dropOnElement="false"
+            :allowReorder="true"
             ref="pond"
+            class-name="my-pond"
+            label-idle="Or upload files..."
             allow-multiple="true"
-            max-files="3"
-            label-idle="Click to choose image, or drag here..."
-            server="/upload"
+            accepted-file-types="image/jpeg, image/png"
             @init="filepondInitialized"
         />
     </div>
@@ -15,15 +20,27 @@
 
 
 <script>
-// Import FilePond
-// vueFilePond: we are importing a function
-import vueFilePond from 'vue-filepond';
+// computed & ref
+import {computed, ref} from "vue";
+// vueFilePond: import vueFilePond function
+import vueFilePond, {setOptions} from 'vue-filepond';
 import 'filepond/dist/filepond.min.css';
-
-// We will use the imported "vueFilePond" function
-const FilePond = vueFilePond();
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 
 
+setOptions({
+    server: {
+        process: {
+            url: './api/upload-product-images',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+            }
+        }
+    }
+});
+
+// use the imported "vueFilePond" function
+const FilePond = vueFilePond(FilePondPluginFileValidateType);
 export default {
     components: {
         FilePond // breaks down to: file-pond
@@ -38,7 +55,7 @@ export default {
             // grap filepond object
             console.log('Filepond object:', this.$refs.pond)
         }
-    }
+    },
 }
 </script>
 

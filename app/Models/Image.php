@@ -9,5 +9,6 @@ class Image extends Model
 {
     use HasFactory;
 
+    // protected
     protected $guarded = [];
 }
