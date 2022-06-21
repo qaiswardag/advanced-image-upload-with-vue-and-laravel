@@ -7,7 +7,11 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
+## Advanced Image Uploading with Vue and Laravel
+
+
 ## About Laravel
+Prepping a Laravel app to store uploaded images. Then, using a battle-tested library called Filepond, we'll provide our Vue component with an area to drag and drop pictures to. Handling image data can be a bit complicated, especially when introducing another layer like a frontend framework. Using the libraries and techniques will make it easier.
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
