@@ -44,16 +44,16 @@ class ImageController extends Controller
         }
 
         $request->validate([
-            'image' => 'file|image|required'
+            'image' => 'required|file|image|mimes:jpg,jpeg,png'
         ]);
 
 
         // process the upload and save the file in storage
         // returns false if image does not save
-        $path = $request->file('image')->store('public/images');
+        $path = $request->file('image')->store('images');
 
         // 500 error if not saved
-        if (!path) {
+        if (!$path) {
             return response()->json(['error', 'The file could not be saved'], 500);
         }
 
@@ -70,6 +70,7 @@ class ImageController extends Controller
 
         // return that image model back to the frontend
         return $image;
+
     }
 
     /**
@@ -81,7 +82,7 @@ class ImageController extends Controller
      */
     public function show(Image $image)
     {
-        //
+        return Image::all();
     }
 
     /**
