@@ -62,7 +62,6 @@ setOptions({
             onerror: (response) => {
                 console.log('is: ', response)
                 if (response) {
-                    console.log('øøøøøøø ja: ', response)
                     serverMessage = JSON.parse(response);
                 }
             },
